@@ -47,16 +47,9 @@ async def create_expense(expense_data: Dict[str, Any]) -> Dict[str, Any]:
         if field not in expense_data or not expense_data[field]:
             raise ValueError(f"Campo '{field}' é obrigatório para criar uma despesa.")
 
-    if not isinstance(expense_data['descricao'], str):
-        raise ValueError("O campo 'descricao' deve ser uma string.")
-    if not isinstance(expense_data['categoria'], str):
-        raise ValueError("O campo 'categoria' deve ser uma string.")
+
     if not isinstance(expense_data['tipo'], str) or expense_data['tipo'] not in ["entrada", "saida"]:
         raise ValueError("O campo 'tipo' deve ser 'entrada' ou 'saida'.")
-    if not isinstance(expense_data['data'], str):
-        raise ValueError("O campo 'data' deve ser uma string.")
-    if not isinstance(expense_data['userId'], str):
-        raise ValueError("O campo 'userId' deve ser uma string.")
 
     if 'valor' in expense_data and isinstance(expense_data['valor'], str):
         try:
