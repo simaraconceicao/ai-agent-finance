@@ -144,7 +144,7 @@ export GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
 export GOOGLE_CLOUD_LOCATION="us-central1" # Ou sua região preferida
 
 # Informa ao ADK para usar a Gemini API via Vertex AI
-export GOOGLE_GENAI_USE_VERTEXAI=True
+export GOOGLE_GENAI_USE_VERTEXAI=False
 
 # O caminho para o diretório do seu agente ADK
 export AGENT_PATH="./finance_agent"
@@ -154,6 +154,8 @@ export AGENT_SERVICE_NAME="finance-assistant-agent"
 
 # O ID do usuário fixo para o agente
 export FINANCE_AGENT_USER_ID="seu-id" # Substitua pelo seu ID de usuário
+
+# Não precisar exportar a key do Gemini pois dentro do cloud run você usa Gemini builtin
 ```
 
 **Importante:** No seu arquivo `finance_agent/agent.py`, o `USER_ID` deve ser carregado via ambiente. A URL do MCP Toolset está fixada no código conforme sua instrução.
@@ -243,3 +245,16 @@ Uma vez que o Agente de IA e o MCP Server estejam deployados e funcionando, voc�
 * "I received an extra 500 dollars today."
 * "I spent 45 dollars on internet this month."
 * "What tips do you have for saving money?"
+
+---
+
+## Documentações oficiais
+
+Esse repo tem algumas dicas legais que ainda não estão documentadas, tanto no fastMCP(config de deploy no Cloud Run) quanto no ADK(uso de transport streamable):
+
+* **Model Context Protocol (MCP)**: [https://modelcontextprotocol.io/introduction](https://modelcontextprotocol.io/introduction)
+* **Google Cloud Run**: [https://cloud.google.com/run/docs](https://cloud.google.com/run/docs)
+* **Google Agent Development Kit (ADK)**: [https://google.github.io/adk-docs/](https://google.github.io/adk-docs/)
+* **FastMCP**: [https://gofastmcp.com/getting-started/welcome](https://gofastmcp.com/getting-started/welcome)
+
+---
